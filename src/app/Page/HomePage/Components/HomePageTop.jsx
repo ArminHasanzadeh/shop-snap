@@ -25,7 +25,7 @@ function HomePageTop(props) {
     
     
   return (
-    <section className="flex justify-center items-center w-[1900px] h-[50vh] mt-10 ">
+    <section className="flex justify-center items-center w-[210vh] h-[50vh]">
       <>
         <Swiper
         slidesPerView={1}
@@ -41,19 +41,19 @@ function HomePageTop(props) {
         className="mySwiper"
         >
           <SwiperSlide>
-            <Image className="w-full h-[300px]" src={Slider1}  alt="Slider1"/>
+            <Image className="w-full h-full" src={Slider1}  alt="Slider1"/>
           </SwiperSlide>
           <SwiperSlide>
-            <Image className="w-full h-[300px]" src={Slider2}  alt="Slider1"/>
+            <Image className="w-full h-full " src={Slider2}  alt="Slider1"/>
           </SwiperSlide>
           <SwiperSlide>
-            <Image className="w-full h-[300px]" src={Slider3}  alt="Slider1"/>
+            <Image className="w-full h-full " src={Slider3}  alt="Slider1"/>
           </SwiperSlide>
           <SwiperSlide>
-            <Image className="w-full h-[300px]" src={Slider4}  alt="Slider1"/>
+            <Image className="w-full h-full " src={Slider4}  alt="Slider1"/>
           </SwiperSlide>
           <SwiperSlide>
-            <Image className="w-full h-[300px]" src={Slider5}  alt="Slider1"/>
+            <Image className="w-full hh-full" src={Slider5}  alt="Slider1"/>
           </SwiperSlide>
         
         </Swiper>
