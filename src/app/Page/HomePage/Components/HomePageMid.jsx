@@ -20,8 +20,10 @@ import Image from "next/image";
 import SliderShopBigSeal from "./SliderSide/SliderShopBigSeal";
 import BigSliderShop from "./SliderSide/BigSliderShop";
 import HomePageTop from "./HomePageTop";
+import WrapSlider from "./SliderSide/WrapSlider";
 
 function HomePageMid() {
+  
   return (
     <section className="mt-10 flex justify-center items-center flex-col">
       <Card className="flex justify-center items-end flex-col border-none shadow-none w-full h-auto">
@@ -62,6 +64,15 @@ function HomePageMid() {
         </CardContent>
       </Card>
 
+
+      <Card className="border-none shadow-none w-full h-auto  flex justify-center items-center">
+        <span className="w-[97%] h-[3px] flex justify-center items-center bg-gray-200"></span>
+        <h3 className="text-pink-700 text-end w-[97%] text-2xl ">دسته بندی</h3>
+        <CardContent className="flex justify-center items-center w-full h-auto mt-5 cal">
+          <WrapSlider />
+        </CardContent>
+      </Card>
+
       <Card className="border-none shadow-none w-full h-auto  flex justify-center items-center">
         <CardContent className="flex justify-center items-center w-full h-auto mt-5 cal">
           <ul className="flex justify-center items-center w-full gap-10">
@@ -76,7 +87,7 @@ function HomePageMid() {
         </CardContent>
       </Card>
 
-      <Card className="flex justify-center items-end flex-col border-none shadow-none w-full h-auto">
+      <Card className="flex justify-center items-center flex-col border-none shadow-none w-full h-auto">
         <CardHeader className="w-full text-end text-2xl">
           <h3 className="text-pink-700 ">فروش ویژه برند پانسی</h3>
         </CardHeader>

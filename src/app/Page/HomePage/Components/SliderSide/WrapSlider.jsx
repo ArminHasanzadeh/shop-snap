@@ -11,9 +11,11 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 
-function SliderShopApi() {
-  const { Api, loading } = useApi();
-  if (loading) return <p>در حال دریافت اطلاعات...</p>;
+function WrapSlider() {
+  const {Categories } = useApi();
+  
+  
+
 
   return (
     <section className="w-full flex justify-center items-center">
@@ -26,33 +28,20 @@ function SliderShopApi() {
           className="w-full"
         >
           <CarouselContent className="-ml-2 md:-ml-4">
-            {Api?.slice(0, 10).map((val) => (
+            {Categories?.slice(0, 10).map((val ,i) => (
               <CarouselItem
-                key={val.id}
+                key={i}
                 className=" basis-1/2 sm:basis-1/3 md:basis-1/4 lg:basis-1/5 w-[150px] "
               >
-                <Card className="h-[300px] w-full border shadow-sm rounded-xl   flex flex-col justify-center items-center">
+                <Card className="h-[300px] w-full flex flex-col justify-center items-center border-none shadow-none">
                   <CardContent className="w-full flex flex-col items-center justify-center h-full text-center">
-                    <figure className="w-full h-[150px] flex justify-center items-center mb-3 border-b-2">
-                      <img
-                        src={val.images[0]}
-                        alt={val.title}
-                        className="object-contain h-full w-full"
-                      />
-                    </figure>
+                    <span className="w-full h-[150px] flex justify-center items-center ">
+                      <p></p>
+                    </span>
                     <div className="flex flex-col justify-end items-center  w-full">
                       <p className="text-sm font-medium text-gray-700 line-clamp-2 mb-1">
-                        {val.title}
+                        {val.name}
                       </p>
-                      <p className="text-gray-500 line-through text-sm w-full">
-                        ${val.price}
-                      </p>
-                      <div className="flex justify-center items-center gap-2 w-full ">
-                        <p className="text-black  text-[20px] w-[50%] flex justify-end items-center">
-                          ${val.finalPrice}
-                        </p>
-                        <span className="w-auto font-bold  rounded-3xl flex justify-center text-white p-1 items-end text-[15px] bg-[var(--SnapColor)]">{val.discountPercentage}%</span>
-                      </div>
                     </div>
                   </CardContent>
                 </Card>
@@ -68,4 +57,4 @@ function SliderShopApi() {
   );
 }
 
-export default SliderShopApi;
+export default WrapSlider;
