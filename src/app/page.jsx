@@ -2,6 +2,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import Header from "./Nav/Header/Header";
 import HomePage from "./Page/HomePage/HomePage";
+import Footer from "./Nav/Footer/Footer";
 
 const Apiside = createContext();
 export const useApi = () => useContext(Apiside);
@@ -48,10 +49,11 @@ export default function Home() {
 
   return (
     <Apiside.Provider value={{ Api, loading ,Categories }}>
-      <main className="flex flex-col items-center justify-start w-full min-h-screen overflow-hidden bg-gray-50">
-        <div className="w-full container mx-auto flex flex-col items-center justify-center p-4">
+      <main className="flex flex-col items-center justify-center w-full h-auto  overflow-hidden bg-gray-50">
+        <div className="w-full container  flex flex-col items-center justify-center ">
           <Header />
           <HomePage />
+          <Footer />
         </div>
       </main>
     </Apiside.Provider>
