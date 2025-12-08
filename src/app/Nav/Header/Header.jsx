@@ -62,8 +62,8 @@ function Header(props) {
             </span>
           </Button>
         </li>
-        <li className="w-[40%] h-full flex justify-center items-center gap-2">
-          <Input  type="search" id="search" placeholder="جستجو در اسنپ شاپ" dir="rtl" />
+        <li className="w-[40%] h-full flex justify-end items-center gap-2">
+        
           <span className="w-[15%] h-[90%]">
             <Image className="w-full h-full" src={Snap} alt="SnapIcone"/>
           </span>

@@ -1,5 +1,7 @@
 :root{
   --SnapColor: #b400ae;
+  --SnapMore: #ff00f734;
+  --TimeCar: #eeeeee;
 }
 .myslider{
   scrollbar-width: none;
