@@ -10,10 +10,11 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import Link from "next/link";
 
 function SliderShopBigSeal() {
   const { Api, loading } = useApi();
-   if (loading) return <p>در حال دریافت اطلاعات...</p>;
+  if (loading) return <p>در حال دریافت اطلاعات...</p>;
 
   return (
     <section className="w-full flex justify-center items-center">
@@ -31,33 +32,39 @@ function SliderShopBigSeal() {
                 key={val.id}
                 className=" basis-1/2 sm:basis-1/3 md:basis-1/4 lg:basis-1/5 w-[150px] "
               >
-                <Card className="h-[300px] w-full border shadow-sm rounded-xl   flex flex-col justify-center items-center">
-                  <CardContent className="w-full flex flex-col items-center justify-center h-full text-center">
-                    <figure className="w-full h-[150px] flex justify-center items-center mb-3 border-b-2">
-                      <img
-                        src={val.images[0]}
-                        alt={val.title}
-                        className="object-contain h-full w-full"
-                      />
-                    </figure>
-                    <div className="flex flex-col justify-end items-center  w-full">
-                      <p className="text-sm font-medium text-gray-700 line-clamp-2 mb-1">
-                        {val.title}
-                      </p>
-                      <p className="text-gray-500 line-through text-sm w-full">
-                        ${val.price}
-                      </p>
-                      <div className="flex justify-center items-center gap-2 w-full ">
-                        <p className="text-black  text-[20px] w-[50%] flex justify-end items-center">
-                          ${val.finalPrice}
+                <Link
+                  href={`/products/${val.id}`}
+                  key={val.id}
+                  className="w-full"
+                >
+                  <Card className="h-[300px] w-full border shadow-sm rounded-xl   flex flex-col justify-center items-center">
+                    <CardContent className="w-full flex flex-col items-center justify-center h-full text-center">
+                      <figure className="w-full h-[150px] flex justify-center items-center mb-3 border-b-2">
+                        <img
+                          src={val.images[0]}
+                          alt={val.title}
+                          className="object-contain h-full w-full"
+                        />
+                      </figure>
+                      <div className="flex flex-col justify-end items-center  w-full">
+                        <p className="text-sm font-medium text-gray-700 line-clamp-2 mb-1">
+                          {val.title}
                         </p>
-                        <span className="w-auto font-bold  rounded-3xl flex justify-center text-white p-1 items-end text-[15px] bg-[var(--SnapColor)]">
-                          {val.discountPercentage}%
-                        </span>
+                        <p className="text-gray-500 line-through text-sm w-full">
+                          ${val.price}
+                        </p>
+                        <div className="flex justify-center items-center gap-2 w-full ">
+                          <p className="text-black  text-[20px] w-[50%] flex justify-end items-center">
+                            ${val.finalPrice}
+                          </p>
+                          <span className="w-auto font-bold  rounded-3xl flex justify-center text-white p-1 items-end text-[15px] bg-[var(--SnapColor)]">
+                            {val.discountPercentage}%
+                          </span>
+                        </div>
                       </div>
-                    </div>
-                  </CardContent>
-                </Card>
+                    </CardContent>
+                  </Card>
+                </Link>
               </CarouselItem>
             ))}
           </CarouselContent>

@@ -7,7 +7,7 @@ import { Store, ShieldCheck, Car, Star } from "lucide-react";
 import "../../Master.css";
 
 export default function ProductDetail({ params }) {
-  const { id } = params;
+  const {id} = params;
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -53,10 +53,10 @@ export default function ProductDetail({ params }) {
               <div className="w-full h-[35%] flex justify-end text-end text-gray-500 items-center  p-2 gap-3">
                 <div>
                   <p>پشخ کاکتوس</p>
-                  <p className="flex ">
+                  <span className="flex ">
                     {" "}
                     <p className="text-green-500">عالی</p>:عملکرد فروشنده
-                  </p>
+                  </span>
                 </div>
                 <div>
                   <span>
@@ -66,7 +66,7 @@ export default function ProductDetail({ params }) {
               </div>
               <div className="w-full h-[35%] border-b-2 border-t-2 flex justify-end items-center gap-3 p-2 text-[20px] text-gray-500">
                 <p>گارانتی سلامت فیزیکی کالا</p>
-                <span className="">
+                <span>
                   <ShieldCheck size={30} />
                 </span>
               </div>
@@ -101,8 +101,8 @@ export default function ProductDetail({ params }) {
             </div>
             <div className="w-[80%] h-[10%] justify-center flex  items-center ">
               <div className="w-[60%] border-1 h-[90%] rounded-4xl flex  justify-end items-center  gap-4 p-2">
-                <p className="text-gray-500 ">(300امتیاز)</p>
-                <p className="font-bold text-[20px]">4.5</p>
+                <p className="text-gray-500 ">({product.stock}امتیاز)</p>
+                <p className="font-bold text-[20px]">{product.rating}</p>
 
                 <Star strokeWidth={3} className="text-yellow-500" />
               </div>
@@ -130,26 +130,7 @@ export default function ProductDetail({ params }) {
             </span>
           </div>
         </section>
-        {/* 
-
-      
-
-      <p className="text-gray-600">{product.description}</p>
-
-      <p className="text-xl font-semibold mt-4">قیمت: {product.price}$</p>
-
-      <p className="text-green-600 font-bold">
-        تخفیف: %{product.discountPercentage}
-      </p>
-
-      <p className="text-red-500 font-bold">
-        قیمت نهایی:{" "}
-        {(
-          product.price -
-          (product.price * product.discountPercentage) / 100
-        ).toFixed(2)}
-        $
-      </p> */}
+    
       </div>
     </>
   );

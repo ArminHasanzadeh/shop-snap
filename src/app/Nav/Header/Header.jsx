@@ -2,10 +2,9 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import Snap from "../../../../public/Header/text-logo.webp";
 
-
-
 import Image from "next/image";
 import React from "react";
+import Link from "next/link";
 
 function Header(props) {
   return (
@@ -36,6 +35,7 @@ function Header(props) {
             </span>
           </Button>
         </li>
+
         <li className="w-[30%] h-full flex justify-start items-center">
           <Button
             variant="outline"
@@ -63,9 +63,10 @@ function Header(props) {
           </Button>
         </li>
         <li className="w-[40%] h-full flex justify-end items-center gap-2">
-        
           <span className="w-[15%] h-[90%]">
-            <Image className="w-full h-full" src={Snap} alt="SnapIcone"/>
+          
+              <Image className="w-full h-full" src={Snap} alt="SnapIcone" />
+            
           </span>
         </li>
       </ul>
