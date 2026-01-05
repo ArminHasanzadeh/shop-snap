@@ -4,34 +4,62 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Snap from "../../../public/Header/text-logo.webp";
-import { Handbag } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import FilterSidebar from "./component/FilterSidebar";
-
-import { Card, CardContent } from "@/components/ui/card"; // فرض بر اینه shadcn/cards رو داری
+import { Card, CardContent } from "@/components/ui/card";
 
 export default function CategoriesPage() {
   const [Api, setApi] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [search, setSearch] = useState("");
   const [loading, setLoading] = useState(true);
-  
+  const [count, setCount] = useState(0);
 
-  // fetch products
+  // تعداد محصولات در سبد خرید
+  useEffect(() => {
+    const storedCart = JSON.parse(localStorage.getItem("cart") || "[]");
+    const totalQuantity = storedCart.reduce(
+      (sum, item) => sum + item.quantity,
+      0
+    );
+    setCount(totalQuantity);
+
+    const handleStorageChange = () => {
+      const updatedCart = JSON.parse(localStorage.getItem("cart") || "[]");
+      const updatedCount = updatedCart.reduce(
+        (sum, item) => sum + item.quantity,
+        0
+      );
+      setCount(updatedCount);
+    };
+
+    window.addEventListener("storage", handleStorageChange);
+    return () => window.removeEventListener("storage", handleStorageChange);
+  }, []);
+
+  // fetch products و اعمال درصد تخفیف و finalPrice
   useEffect(() => {
     fetch("https://dummyjson.com/products?limit=100")
       .then((res) => res.json())
       .then((data) => {
-        // محاسبه finalPrice و discountPercentage برای هر محصول
-        const productsWithDiscount = data.products.map((p) => ({
-          ...p,
-          finalPrice: Math.round(p.price * 0.9), // فرض مثال 10% تخفیف
-          discountPercentage: 10,
-        }));
+        const productsWithDiscount = data.products.map((p) => {
+          const discount = p.discountPercentage || 0;
+          const finalPrice = parseFloat(
+            (p.price - (p.price * discount) / 100).toFixed(2)
+          );
+
+          return {
+            ...p,
+            finalPrice,
+            discountPercentage: discount,
+          };
+        });
+
         setApi(productsWithDiscount);
         setFilteredProducts(productsWithDiscount);
         setLoading(false);
-      });
+      })
+      .catch((err) => console.error(err));
   }, []);
 
   // search filter
@@ -49,10 +77,35 @@ export default function CategoriesPage() {
           <li className="w-[10%]">
             <Button
               variant="outline"
-              size="icon"
-              className="w-[40px] h-[40px] bg-white rounded-sm border border-black"
+              className="w-[40px] h-[40px] rounded-sm border-1 border-black flex justify-center items-center relative"
             >
-              <Handbag size={25} />
+              <Link
+                href="/shopCart"
+                className="w-full h-full flex justify-center items-center"
+              >
+                <span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth="1.5"
+                    stroke="currentColor"
+                    className="size-6"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007ZM8.625 10.5a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm7.5 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z"
+                    />
+                  </svg>
+                </span>
+              </Link>
+
+              {count > 0 && (
+                <span className="absolute -top-2 -right-2 w-5 h-5 bg-red-500 text-white text-xs rounded-full flex justify-center items-center">
+                  {count}
+                </span>
+              )}
             </Button>
           </li>
 
@@ -68,7 +121,9 @@ export default function CategoriesPage() {
 
           <li className="w-[10%] flex justify-end">
             <figure className="w-[100px] h-[60px]">
-              <Image src={Snap} alt="logo" className="w-full h-full" />
+              <Link href={"/"}>
+                <Image className="w-full h-full" src={Snap} alt="SnapIcone" />
+              </Link>
             </figure>
           </li>
         </ul>
@@ -80,13 +135,13 @@ export default function CategoriesPage() {
         <div className="w-[80%] grid grid-cols-2 md:grid-cols-4 gap-4 p-4">
           {searchedProducts.map((val) => (
             <Link href={`/products/${val.id}`} key={val.id} className="w-full">
-              <Card className="h-[300px] w-full border shadow-sm rounded-xl hover:shadow-md transition-all duration-200 flex justify-center items-center cursor-pointer">
-                <CardContent className="flex flex-col items-center justify-center h-full text-center">
+              <Card className="h-[300px] w-full border shadow-sm rounded-xl hover:shadow-md transition-all duration-200 flex flex-col justify-center items-center cursor-pointer">
+                <CardContent className="w-full flex flex-col items-center justify-center h-full text-center">
                   <figure className="w-full h-[150px] flex justify-center items-center mb-3 border-b-2">
                     <img
                       src={val.images[0]}
                       alt={val.title}
-                      className="object-contain h-full"
+                      className="object-contain h-full w-full"
                     />
                   </figure>
 
@@ -94,7 +149,6 @@ export default function CategoriesPage() {
                     <p className="text-sm font-medium text-gray-700 line-clamp-2 mb-1">
                       {val.title}
                     </p>
-
                     <p className="text-gray-500 line-through text-sm w-full">
                       ${val.price}
                     </p>
@@ -104,7 +158,6 @@ export default function CategoriesPage() {
                         ${val.finalPrice}
                       </p>
 
-                      {/* اضافه شدن شرط برای نمایش درصد تخفیف */}
                       {val.discountPercentage > 0 && (
                         <span className="w-auto font-bold rounded-3xl flex justify-center text-white p-1 items-end text-[15px] bg-[var(--SnapColor)]">
                           {val.discountPercentage}%

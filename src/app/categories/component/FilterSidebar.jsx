@@ -58,7 +58,8 @@ export default function FilterSidebar({ products, onFilter }) {
         <h3 className="text-xl font-bold">فیلترها</h3>
         <button
           onClick={resetFilters}
-          className="text-pink-500 text-sm"
+          className="text-pink-500 text-sm cursor-pointer"
+          
         >
           حذف فیلترها
         </button>
@@ -67,7 +68,7 @@ export default function FilterSidebar({ products, onFilter }) {
       <Accordion type="multiple" defaultValue={["category", "price"]}>
         {/* CATEGORY */}
         <AccordionItem value="category">
-          <AccordionTrigger>دسته‌بندی‌ها</AccordionTrigger>
+          <AccordionTrigger className={'cursor-pointer'}>دسته‌بندی‌ها</AccordionTrigger>
           <AccordionContent>
             <ul className="space-y-2">
               {categories.map((cat) => (
@@ -90,7 +91,7 @@ export default function FilterSidebar({ products, onFilter }) {
 
         {/* PRICE */}
         <AccordionItem value="price">
-          <AccordionTrigger>قیمت</AccordionTrigger>
+          <AccordionTrigger className={'cursor-pointer'}>قیمت</AccordionTrigger>
           <AccordionContent className="space-y-4">
             <Slider
               value={priceRange}
