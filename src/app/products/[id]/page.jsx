@@ -6,14 +6,15 @@ import Snap from "../../../../public/Header/text-logo.webp";
 import Image from "next/image";
 import { Store, ShieldCheck, Car, Star } from "lucide-react";
 import "../../Master.css";
-import { useRouter } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import Footer from "@/app/Nav/Footer/Footer";
 
-export default function ProductDetail({ params }) {
-  const { id } = params;
+export default function ProductDetail() {
+  const { id } = useParams();
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
   const router = useRouter();
+  
 
   useEffect(() => {
     fetch(`https://dummyjson.com/products/${id}`)

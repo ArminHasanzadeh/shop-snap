@@ -80,6 +80,10 @@ export default function ShopCart() {
     0
   );
 
+  if(!enrichedCart) {
+    return <>loading ...</>
+  }
+
   return (
     <div className="overflow-x-hidden">
       <Header />
@@ -123,7 +127,7 @@ export default function ShopCart() {
                     مبلغ قابل پرداخت
                   </span>
                   <span className="text-lg font-bold">
-                    ${totalPrice.toFixed(2)}
+                    ${totalPrice?.toFixed(2)}
                   </span>
                 </CardContent>
                 <CardFooter className={"w-[200px]"}>
@@ -175,7 +179,7 @@ export default function ShopCart() {
                         <div className="flex justify-center items-end w-[80%] flex-col">
                           <h2 className="font-semibold">{item.title}</h2>
                           <p className="text-sm text-muted-foreground mt-1 line-through">
-                            ${item.price.toFixed(2)}
+                            ${item?.price?.toFixed(2)}
                           </p>
 
                           {item.discountPercentage > 0 && (
@@ -185,7 +189,7 @@ export default function ShopCart() {
                           )}
 
                           <p className="text-lg font-bold mt-1">
-                            قیمت نهایی: ${item.finalPrice.toFixed(2)}
+                            قیمت نهایی: ${item?.finalPrice?.toFixed(2)}
                           </p>
                         </div>
                       </div>
