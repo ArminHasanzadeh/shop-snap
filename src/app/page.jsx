@@ -55,7 +55,7 @@ export default function Home() {
   return (
     <Apiside.Provider value={{ Api, loading, Categories }}>
       <main className="flex flex-col items-center justify-center w-full h-auto overflow-hidden bg-gray-50">
-        <div className="w-full container flex flex-col items-center justify-center">
+        <div className="w-full  flex flex-col items-center justify-center">
           <Header />
           <HomePage />
           <Footer />

@@ -33,7 +33,7 @@ function Header(props) {
   }, []);
   return (
     <header className="w-full h-[60px] flex justify-center items-center p-2 bg-gray-100  shadow-sm  fixed top-0 z-99">
-      <ul className="w-[70%] h-full flex justify-center items-center">
+      <ul className="w-[70%] h-full flex justify-center items-center max-md:w-full">
         <li className="w-[10%] h-full flex justify-start items-center ">
           <Button
             variant="outline"
@@ -72,11 +72,11 @@ function Header(props) {
           </Button>
         </li>
 
-        <li className="w-[30%] h-full flex justify-start items-center">
+        <li className="w-[30%] h-full flex justify-center items-center max-md:w-[70%]">
           <Button
             variant="outline"
             className={
-              "border-2 border-black p-5 flex justify-center items-center"
+              "border-2 border-black p-5 flex justify-center items-center w-[1  50px] h-[50px]"
             }
           >
             <Link href={"/categories"}>
@@ -87,8 +87,8 @@ function Header(props) {
             </span>
           </Button>
         </li>
-        <li className="w-[40%] h-full flex justify-end items-center gap-2">
-          <span className="w-[15%] h-[90%]">
+        <li className="w-[40%] h-full flex justify-end items-center gap-2 max-md:w-[20%]">
+          <span className="w-[15%] h-[90%] max-md:w-[70%]">
             <Link href={"/"}>
               <Image className="w-full h-full" src={Snap} alt="SnapIcone" />
             </Link>

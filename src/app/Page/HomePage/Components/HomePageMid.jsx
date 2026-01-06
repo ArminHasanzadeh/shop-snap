@@ -25,57 +25,57 @@ import WrapSlider from "./SliderSide/WrapSlider";
 function HomePageMid() {
   
   return (
-    <section className="mt-10 flex justify-center items-center flex-col">
-      <Card className="flex justify-center items-end flex-col border-none shadow-none w-full h-auto">
+    <section className="mt-10 flex justify-center items-center flex-col w-[100%]">
+      <Card className="flex justify-center items-center flex-col border-none shadow-none w-[80%] ">
         <CardHeader className="w-full text-end text-2xl">
           <h3 className="text-pink-700 ">فروش ویژه</h3>
         </CardHeader>
-        <CardContent>
+        <CardContent className={"flex justify-center items-center"}>
           <SliderShopApi />
         </CardContent>
       </Card>
 
-      <Card className="border-none shadow-none w-full h-auto  flex justify-center items-center">
-        <span className="w-[97%] h-[3px] flex justify-center items-center bg-gray-200"></span>
-        <CardContent className="flex justify-center items-center w-full h-auto mt-5 cal">
-          <ul className="flex justify-center items-center w-full gap-10">
-            <li>
+        <span className="w-[85%] h-[3px] flex justify-center items-center bg-gray-200 mt-5"></span>
+      <Card className="border-none shadow-none w-[80%] max-xl:w-full max-xl:gap-2 h-[30vh]  flex justify-center items-center">
+        <CardContent className="flex justify-center items-center w-full h-full  mt-5 ">
+          <ul className="flex justify-center items-center w-full h-full gap-10">
+            <li className="max-md:w-[400px] max-md:h-[250px]">
               <Image src={MidImg1} className="rounded-md" alt="MidPhoto" />
             </li>
-            <li>
+            <li className="max-md:hidden">
               <Image src={MidImg2} className="rounded-md" alt="MidPhoto" />
             </li>
-            <li>
+            <li className="max-lg:hidden">
               <Image src={MidImg3} className="rounded-md" alt="MidPhoto" />
             </li>
-            <li>
+            <li className="max-xl:hidden">
               <Image src={MidImg4} className="rounded-md" alt="MidPhoto" />
             </li>
           </ul>
         </CardContent>
       </Card>
 
-      <Card className="flex justify-center items-end flex-col border-none shadow-none w-full h-auto">
+      <Card className="flex justify-center items-center flex-col border-none shadow-none w-[80%]">
         <CardHeader className="w-full text-end text-2xl">
           <h3 className="text-pink-700 ">پرفروش ها</h3>
         </CardHeader>
-        <CardContent>
+        <CardContent className={"flex justify-center items-center"}>
           <SliderShopBigSeal />
         </CardContent>
       </Card>
 
 
       <Card className="border-none shadow-none w-full h-auto  flex justify-center items-center">
-        <span className="w-[97%] h-[3px] flex justify-center items-center bg-gray-200"></span>
-        <h3 className="text-pink-700 text-end w-[97%] text-2xl ">دسته بندی</h3>
-        <CardContent className="flex justify-center items-center w-full h-auto mt-5 cal">
+        <span className="w-[85%] h-[3px] flex justify-center items-center bg-gray-200"></span>
+        <h3 className="text-pink-700 text-end w-[80%] text-2xl ">دسته بندی</h3>
+        <CardContent className="flex justify-center items-center w-[80%] h-auto  cal">
           <WrapSlider />
         </CardContent>
       </Card>
 
-      <Card className="border-none shadow-none w-full h-auto  flex justify-center items-center">
-        <CardContent className="flex justify-center items-center w-full h-auto mt-5 cal">
-          <ul className="flex justify-center items-center w-full gap-10">
+      <Card className="border-none shadow-none w-[80%] max-lg:w-full flex justify-center items-center">
+        <CardContent className="flex justify-center items-center w-full h-[200px] mt-5 max-md:hidden">
+          <ul className="flex justify-center items-center w-full h-full gap-10">
             <li className=" w-full h-full">
               <Image
                 src={MidImg5}
@@ -87,7 +87,7 @@ function HomePageMid() {
         </CardContent>
       </Card>
 
-      <Card className="flex justify-center items-center flex-col border-none shadow-none w-full h-auto">
+      <Card className="flex justify-center items-center flex-col border-none shadow-none w-[80%] h-auto max-md:hidden">
         <CardHeader className="w-full text-end text-2xl">
           <h3 className="text-pink-700 ">فروش ویژه برند پانسی</h3>
         </CardHeader>
@@ -96,9 +96,9 @@ function HomePageMid() {
         </CardContent>
       </Card>
 
-      <Card className="border-none shadow-none w-full h-auto  flex justify-center items-center">
-        <CardContent className="flex justify-center items-center w-full h-auto mt-5 cal">
-          <ul className="flex justify-center items-center w-full gap-10">
+      <Card className="border-none shadow-none w-[80%]  flex justify-center items-center">
+        <CardContent className="flex justify-center items-center w-full h-[200px] mt-5 max-md:hidden">
+          <ul className="flex justify-center items-center w-full h-full gap-10">
             <li className=" w-full h-full">
               <Image
                 src={MidImg6}

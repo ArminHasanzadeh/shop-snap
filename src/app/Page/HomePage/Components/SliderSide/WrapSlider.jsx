@@ -17,6 +17,7 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import Image from "next/image";
+import Link from "next/link";
 const CategoriesIMg = [
   { img: Wrapimg6 },
   { img: Wrapimg5 },
@@ -25,14 +26,9 @@ const CategoriesIMg = [
   { img: Wrapimg2 },
   { img: Wrapimg1 },
 ];
- 
-
 
 function WrapSlider() {
-  const {Categories } = useApi();
-  
-  
-
+  const { Categories } = useApi();
 
   return (
     <section className="w-full flex justify-center items-center">
@@ -42,26 +38,40 @@ function WrapSlider() {
             align: "start",
             loop: false,
           }}
-          className="w-full"
+          className="flex justify-center w-full"
         >
           <CarouselContent className="-ml-2 md:-ml-4">
-            {Categories?.slice(0, 6).map((val ,i) => (
-              <CarouselItem
-                key={i}
-                className=" basis-1/2 sm:basis-1/3 md:basis-1/4 lg:basis-1/5 w-[150px] "
-              >
-                <Card className="h-[300px] w-full flex flex-col justify-center items-center border-none shadow-none">
-                  <CardContent className="w-full flex flex-col items-center justify-center h-full text-center">
-                    <span className="w-full h-[150px] flex justify-center items-center ">
-                      <Image className="w-full h-full" src={CategoriesIMg[i]?.img} alt="imgwrap" />
-                    </span>
-                    <div className="flex flex-col justify-end items-center  w-full">
-                      <p className="text-sm font-medium text-gray-700 line-clamp-2 mb-1">
-                        {val.name}
-                      </p>
-                    </div>
-                  </CardContent>
-                </Card>
+            {Categories?.slice(0, 6).map((val, i) => (
+               <CarouselItem
+                             key={i}
+                             className="
+                                    /* موبایل: 2 آیتم */
+                               sm:basis-1/2   /* sm: 2 آیتم */
+                               md:basis-1/3   /* md: 3 آیتم */
+                               lg:basis-1/3   /* lg: 4 آیتم */
+                               xl:basis-1/5   /* xl: 5 آیتم */
+                              
+                              w-[300px]
+                             "
+                           >
+                <Link href={"/categories"}>
+                  <Card className="h-[300px] w-full flex flex-col justify-center items-center border-none shadow-none">
+                    <CardContent className="w-full flex flex-col items-center justify-center h-full text-center">
+                      <span className="w-full h-[150px] flex justify-center items-center ">
+                        <Image
+                          className="w-full h-full"
+                          src={CategoriesIMg[i]?.img}
+                          alt="imgwrap"
+                        />
+                      </span>
+                      <div className="flex flex-col justify-end items-center  w-full">
+                        <p className="text-sm font-medium text-gray-700 line-clamp-2 mb-1">
+                          {val.name}
+                        </p>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </Link>
               </CarouselItem>
             ))}
           </CarouselContent>

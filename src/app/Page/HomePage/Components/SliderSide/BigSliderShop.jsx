@@ -10,7 +10,7 @@ function BigSliderShop() {
   if (loading) return <p>در حال دریافت اطلاعات...</p>;
 
   return (
-    <section className="w-full flex justify-center items-center flex-col h-auto">
+    <section className="w-full flex justify-center items-center flex-col h-auto gap-5">
       {/* بخش اول */}
       <div className="w-full flex gap-5 h-full">
         {Api?.slice(0, 5).map((val) => (
@@ -51,7 +51,7 @@ function BigSliderShop() {
       </div>
 
       {/* بخش دوم */}
-      <div className="w-full h-full flex gap-5 justify-center items-center">
+      <div className="w-full h-full flex gap-5 justify-center items-center ">
         {Api?.slice(6, 11).map((val) => (
           <Link href={`/products/${val.id}`} key={val.id} className="w-full">
             <Card className="h-[300px] w-full border shadow-sm rounded-xl hover:shadow-md transition-all duration-200 flex justify-center items-center cursor-pointer">
